@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Label, TextInput, Button } from 'flowbite-react';
+import { Label, TextInput, Button, Card } from 'flowbite-react';
 
 const Login = ({ setIsLoggedIn   }) => {
   const [username, setUsername] = useState('');
@@ -23,7 +23,7 @@ const Login = ({ setIsLoggedIn   }) => {
     <div className="mt-8">
       <div className="flex justify-center items-center">
         <div className="flex flex-col max-w-md">
-          <div className="bg-white p-8 rounded shadow-md">
+          <Card className="max-w-sm bg-white p-8 rounded shadow-md">
             <h2 className="text-2xl font-bold mb-4">Login</h2>
             <form className="flex max-w-md flex-col gap-4" onSubmit={handleLogin}>
               <div className="mb-4 block">
@@ -33,9 +33,9 @@ const Login = ({ setIsLoggedIn   }) => {
                 <TextInput
                   type="text"
                   id="username"
-                  sizing="md"
+                  sizing="base"
                   placeholder="Username"
-                  className="placeholder-gray-50  bg-white rounded-md focus:outline-none border-gray-300 bottom-1"
+                  className="placeholder-gray-50"
                  value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 />
@@ -47,7 +47,7 @@ const Login = ({ setIsLoggedIn   }) => {
                 <TextInput
                   type="password"
                   id="password"
-                  sizing="md"
+                  sizing="base"
                   placeholder="Password"
                   className="mt-1 placeholder-gray-50  bg-white rounded-md focus:outline-none"
                   value={password}
@@ -62,7 +62,7 @@ const Login = ({ setIsLoggedIn   }) => {
               </Button>
             </form>
             {error && <p>{error}</p>}
-          </div>
+          </Card>
         </div>
       </div>
     </div>

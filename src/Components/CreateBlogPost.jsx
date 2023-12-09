@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, Textarea, Button, Label } from 'flowbite-react';
+import { TextInput, Textarea, Button, Label, Card } from 'flowbite-react';
 const CreateBlogPost = ({ addPost }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -24,9 +24,9 @@ const CreateBlogPost = ({ addPost }) => {
 
   return (
     <div className="lg:w-1/2 w-full">
-      <div className='"w-full px-8 py-10 mx-auto overflow-hidden bg-white rounded-lg shadow-2xl lg:max-w-xl shadow-gray-50'>
+      <Card className=' bg-white rounded-lg shadow-4xl  shadow-gray-50'>
         <h2 className=' text-xl font-medium text-gray-200 text-center'>Create New Blog Post</h2>
-        <form onSubmit={handleSubmit} className='mt-2'>
+        <form onSubmit={handleSubmit} className='mt-2 p-4'>
           <div className=''>
             <div className='flex-1'>
               <div className="mb-2 block">
@@ -58,7 +58,7 @@ const CreateBlogPost = ({ addPost }) => {
           </div>
        
       </form>
-      </div>
+      </Card>
       
           
     </div>

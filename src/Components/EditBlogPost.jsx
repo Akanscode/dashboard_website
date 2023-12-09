@@ -44,7 +44,7 @@ const EditBlogPost = ({ post, updatePost }) => {
                              required
                           ></Textarea>
                       </div>
-                  <Button gradientMonochrome="success" className='text-white bg-black mt-2 ' type="submit">Update Post</Button>
+                  <Button  className='text-white bg-black mt-2 ' type="submit">Update Post</Button>
               </div>
           </form>
           </div>
