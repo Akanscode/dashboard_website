@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
 import { Label, TextInput, Button } from 'flowbite-react';
 
-const Login = ({ handleLogin }) => {
+const Login = ({ setIsLoggedIn   }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleUserLogin = () => {
-    if (username && password) {
-      handleLogin(username, password);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    if (username === 'user' && password === 'password') {
+      localStorage.setItem('isLoggedIn', 'true');
+      setIsLoggedIn(true);
     } else {
-      alert('Please enter both username and password.');
+      setError('Invalid username or password');
     }
   };
+ 
 
   return (
     <div className="mt-8">
@@ -19,7 +25,7 @@ const Login = ({ handleLogin }) => {
         <div className="flex flex-col max-w-md">
           <div className="bg-white p-8 rounded shadow-md">
             <h2 className="text-2xl font-bold mb-4">Login</h2>
-            <form className="flex max-w-md flex-col gap-4">
+            <form className="flex max-w-md flex-col gap-4" onSubmit={handleLogin}>
               <div className="mb-4 block">
                 <Label htmlFor="username" className="block text-sm font-semibold mb-2">
                   Username
@@ -29,9 +35,9 @@ const Login = ({ handleLogin }) => {
                   id="username"
                   sizing="md"
                   placeholder="Username"
-                  className="placeholder-gray-50 bg-white rounded-md focus:outline-none"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  className="placeholder-gray-50  bg-white rounded-md focus:outline-none border-gray-300 bottom-1"
+                 value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -43,18 +49,19 @@ const Login = ({ handleLogin }) => {
                   id="password"
                   sizing="md"
                   placeholder="Password"
-                  className="block w-full px-5 mt-1 placeholder-gray-50 bg-white rounded-md focus:outline-none"
+                  className="mt-1 placeholder-gray-50  bg-white rounded-md focus:outline-none"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <Button
-                onClick={handleUserLogin}
+                type='submit'
                 className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none"
               >
                 Login
               </Button>
             </form>
+            {error && <p>{error}</p>}
           </div>
         </div>
       </div>

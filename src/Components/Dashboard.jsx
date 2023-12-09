@@ -1,89 +1,71 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
-import DashboardMainContent from './DashboardMainContent';
-import SideBarComponent from './SideBarComponent';
-import Login from './Login';
+import React, { useState, useEffect } from 'react';
+//import { Link } from 'react-router-dom';
+import CreateBlogPost from './CreateBlogPost';
+import EditBlogPost from './EditBlogPost';
+import ViewBlogPost from './ViewBlogPost';
 
 const Dashboard = () => {
- 
-  
-  const [loggedIn, setLoggedIn] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState({ title: '', content: '' });
-  const [editedPost, setEditedPost] = useState({ id: null, content: '' });
-  const [editModalOpen, setEditModalOpen] = useState(false);
-  const navigate = useNavigate();
-   
-
+  const [editing, setEditing] = useState(false);
+  const [currentPost, setCurrentPost] = useState(null);
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
     setPosts(storedPosts);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('blogPosts', JSON.stringify(posts));
+  }, [posts]);
 
-  const handleCreatePost = () => {
-    if (newPost.title && newPost.content) {
-      const updatedPosts = [...posts, { id: Date.now(), ...newPost }];
-      setPosts(updatedPosts);
-      localStorage.setItem('blogPosts', JSON.stringify(updatedPosts));
-      setNewPost({ title: '', content: '' });
-    } else {
-      alert('Please enter both title and content.');
-    }
+  const addPost = (newPost) => {
+    setPosts([...posts, newPost]);
   };
-  
-   const handleEdit = () => {
-    const updatedPosts = posts.map((post) => {
-      if (post.id === editedPost.id) {
-        return { ...post, content: editedPost.content };
-      }
-      return post;
-    });
 
+  const editPost = (post) => {
+    setEditing(true);
+    setCurrentPost(post);
+  };
+
+  const updatePost = (updatedPost) => {
+    const updatedPosts = posts.map((post) =>
+      post.id === updatedPost.id ? updatedPost : post
+    );
     setPosts(updatedPosts);
-    localStorage.setItem('blogPosts', JSON.stringify(updatedPosts));
-    setEditModalOpen(false);
-    setEditedPost({ id: null, content: '' });
+    setEditing(false);
+    setCurrentPost(null);
   };
-  const handleLogin = (username, password) => {
-  if (username === 'admin' && password === 'password') {
-    setLoggedIn(true); 
-    navigate('/dashboard');
-  } else {
-    alert('Invalid username or password');
-  }
+
+  const deletePost = (postId) => {
+    const updatedPosts = posts.filter((post) => post.id !== postId);
+    setPosts(updatedPosts);
+  };
+
+  return (
+    <div>
+      <h1>Blog Dashboard</h1>
+            {!editing ? (
+        <CreateBlogPost addPost={addPost} />
+      ) : (
+        <EditBlogPost post={currentPost} updatePost={updatePost} />
+      )}
+      <hr />
+
+      <h2 className=' text-center font-bold text-xl capitalize'>Blog Posts</h2>
+      <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-10'>
+        {posts.map((post) => (
+          
+        <ViewBlogPost
+          key={post.id}
+          post={post}
+          editPost={editPost}
+          deletePost={deletePost}
+        />
+      ))}
+      </div>
+      
+    </div>
+  );
 };
 
- return (
-   <div className="flex h-screen">
-      {!loggedIn ? (
-        <Login 
-          handleLogin={handleLogin} 
-         
-        />
-      ) : (
-        <>
-          <SideBarComponent
-            newPost={newPost}
-            setNewPost={setNewPost}
-            handleCreatePost={handleCreatePost}
-            posts={posts}
-            handleEdit={handleEdit}
-          />
-          <DashboardMainContent
-            posts={posts}
-            editedPost={editedPost}
-            editModalOpen={editModalOpen}
-            setEditModalOpen={setEditModalOpen}
-            setEditedPost={setEditedPost}
-            handleEdit={handleEdit}
-          />
-        </>
-      )}
-    </div>
-
-  );
-}
-
-export default Dashboard
+export default Dashboard;

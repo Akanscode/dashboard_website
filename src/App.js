@@ -1,23 +1,29 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-
-
-import Login from './Components/Login';
+import React, { useState } from 'react';
 import Dashboard from './Components/Dashboard';
+import Login from './Components/Login';
+import { Button } from 'flowbite-react';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem('isLoggedIn') === 'true'
+  );
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+  };
+
   return (
-    <Router>
-     
+    <div>
+      {isLoggedIn ? (
         <div>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
+          <Button className=' bg-red-200 text-white' onClick={handleLogout}>Logout</Button>
+          <Dashboard />
         </div>
-     
-    </Router>
+      ) : (
+        <Login setIsLoggedIn={setIsLoggedIn} />
+      )}
+    </div>
   );
 };
 
