@@ -60,7 +60,7 @@ const Dashboard = ({setIsLoggedIn }) => {
   };
  
   return (
-    <div className=" container mx-auto flex justify-between">
+    <div className=" container mx-auto flex ">
       <CustomSidebar activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout}  />
       <div className="flex-1 p-4">
         {!editing ? (

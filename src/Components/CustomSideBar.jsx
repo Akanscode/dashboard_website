@@ -7,7 +7,7 @@ import {  HiChartPie, HiOutlineHome ,  HiOutlinePencilAlt  } from 'react-icons/h
 const CustomSidebar = ({  activeTab, handleLogout, setActiveTab }) => {
    
     return (
-    <Sidebar className=" container h-[650px] overflow-y-auto overflow-x-hidden rounded bg-gray-600 py-4 px-2 w-[200px]  text-white">
+    <Sidebar className=" container mx-auto  sm:mx-0 sm:w-[200px] h-screen md:h-auto  overflow-y-auto overflow-x-hidden rounded bg-gray-600 py-4 px-2 text-white">
       <Sidebar.Items className='mt-6'>
           <Sidebar.ItemGroup className='mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0'>
             <Sidebar.Item className="bg-gray-500 text-black my-4 text-[0.94rem] " href="#" icon={HiChartPie}>
