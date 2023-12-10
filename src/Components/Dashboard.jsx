@@ -60,31 +60,32 @@ const Dashboard = ({setIsLoggedIn }) => {
   };
  
   return (
-    <div className=" container mx-auto flex ">
+    <div>
       <CustomSidebar activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout}  />
-      <div className="flex-1 p-4">
-        {!editing ? (
-          activeTab === 'create' ? (
-            <CreateBlogPost addPost={addPost} />
+      <div className="p-4 sm:ml-64">
+        <div className='p-4 '>
+          {!editing ? (
+            activeTab === 'create' ? (
+              <CreateBlogPost addPost={addPost} />
+            ) : (
+                <>
+                  <h2 className=' text-center font-bold text-xl capitalize'>Blog Posts</h2>
+                  <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-10'>
+                    {posts.map((post) => (
+                      <ViewBlogPost
+                        key={post.id}
+                        post={post}
+                        editPost={editPost}
+                        deletePost={deletePost}
+                      />
+                    ))}
+                  </div>
+                </>
+            )
           ) : (
-              <>
-                <h2 className=' text-center font-bold text-xl capitalize'>Blog Posts</h2>
-                <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-10'>
-                  {posts.map((post) => (
-                    <ViewBlogPost
-                      key={post.id}
-                      post={post}
-                      editPost={editPost}
-                      deletePost={deletePost}
-                      
-                    />
-                  ))}
-                </div>
-              </>
-          )
-        ) : (
-          <EditBlogPost post={currentPost} updatePost={updatePost} />
-        )}
+            <EditBlogPost post={currentPost} updatePost={updatePost} />
+          )}
+        </div>
       </div>
     </div>
   );

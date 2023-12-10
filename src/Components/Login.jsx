@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Label, TextInput, Button, Card } from 'flowbite-react';
+//import { Label, TextInput, Button, Card } from 'flowbite-react';
 
-const Login = ({ setIsLoggedIn   }) => {
+const Login = ({ setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,53 +20,33 @@ const Login = ({ setIsLoggedIn   }) => {
  
 
   return (
-    <div className="mt-8">
-      <div className="flex justify-center items-center">
-        <div className="flex flex-col max-w-md">
-          <Card className="max-w-sm bg-white p-8 rounded shadow-md">
-            <h2 className="text-2xl font-bold mb-4">Login</h2>
-            <form className="flex max-w-md flex-col gap-4" onSubmit={handleLogin}>
-              <div className="mb-4 block">
-                <Label htmlFor="username" className="block text-sm font-semibold mb-2">
-                  Username
-                </Label>
-                <TextInput
-                  type="text"
-                  id="username"
-                  sizing="base"
-                  placeholder="Username"
-                  className="placeholder-gray-50"
-                 value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
+    <section className="bg-gray-50 dark:bg-gray-900">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Sign in to your account
+            </h1>
+            <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleLogin}>
+              <div>
+                <label for="text" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                <input type="text" name="user" id="user" onChange={(e) => setUsername(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-gray-600 block w-full p-2.5 " placeholder="Username"/>
               </div>
-              <div className="mb-4">
-                <Label htmlFor="password" className="block text-sm font-semibold mb-2">
-                  Password
-                </Label>
-                <TextInput
-                  type="password"
-                  id="password"
-                  sizing="base"
-                  placeholder="Password"
-                  className="mt-1 placeholder-gray-50  bg-white rounded-md focus:outline-none"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+              <div>
+                <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-gray-600 block w-full p-2.5 "/>
               </div>
-              <Button
-                type='submit'
-                className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 focus:outline-none"
-              >
-                Login
-              </Button>
+             
+              <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+             
             </form>
             {error && <p className='text-red-400 font-thin'>{error}</p>}
-          </Card>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    </section>
+   
+  )
+}
 
 export default Login;
