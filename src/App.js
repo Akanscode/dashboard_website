@@ -2,34 +2,30 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
 import Login from './Components/Login';
+//import CreateBlogPost from './Components/CreateBlogPost';
+//import ViewSingleBlog from './Components/ViewSingleBlog';
 
-
+//<Route path="/post/:id" element={<ViewSingleBlog />} />
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem('isLoggedIn') === 'true'
   );
 
- const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    setIsLoggedIn(false);
-  };
+ 
 
 
   return (
     <BrowserRouter>
       <div>
         {isLoggedIn ? (
-          <div className=''>
-            
-            
-               <Routes>
-              <Route path="/" element={<Dashboard  handleLogout={handleLogout}/>} />
-             
-            </Routes>
-           
           
-           
-          </div>
+            <Routes>
+            <Route path="/" element={<Dashboard setIsLoggedIn={setIsLoggedIn} />}  />
+            
+            
+              
+            </Routes>
+          
         ) : (
           <Login setIsLoggedIn={setIsLoggedIn} />
         )}

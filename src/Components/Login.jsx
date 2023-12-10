@@ -37,7 +37,7 @@ const Login = ({ setIsLoggedIn   }) => {
                   placeholder="Username"
                   className="placeholder-gray-50"
                  value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -61,7 +61,7 @@ const Login = ({ setIsLoggedIn   }) => {
                 Login
               </Button>
             </form>
-            {error && <p>{error}</p>}
+            {error && <p className='text-red-400 font-thin'>{error}</p>}
           </Card>
         </div>
       </div>

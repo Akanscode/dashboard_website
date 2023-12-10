@@ -1,29 +1,27 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
-const ViewSingleBlogPost = ({ posts, history, match }) => {
-  const { id } = match.params;
+const ViewSingleBlogPost = ({ posts }) => {
+  const { title, content, image } = posts
+  const { id } = useRouteMatch().params;
 
   const post = posts.find((post) => post.id === parseInt(id));
 
-  const goBack = () => {
-    history.goBack();
-  };
-
   return (
     <div>
-      <h1>View Blog Post</h1>
+      <h1 >View Blog Post</h1>
       {post ? (
-        <div>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-          <button onClick={goBack}>Go Back</button>
+        <div className='flex flex-col items-center justify-center'>
+          {image && <img src={URL.createObjectURL(image)} alt="Uploaded" />}
+          <h2 className=' text-lg capitalize font-medium'>{title}</h2>
+          <p className=' text-base font-light max-w-md'>{content}</p>
+          <Link to="/">Go Back</Link>
         </div>
       ) : (
-        <p>Post not found</p>
+        <p className='text-center text-2xl font-bold capitalize'>Post not found</p>
       )}
     </div>
   );
 };
 
-export default withRouter(ViewSingleBlogPost);
+export default ViewSingleBlogPost;

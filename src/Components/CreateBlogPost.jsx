@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { TextInput, Textarea, Button, Label, Card } from 'flowbite-react';
+import { TextInput, Textarea, Button, Label, Card, FileInput  } from 'flowbite-react';
 const CreateBlogPost = ({ addPost }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [image, setImage] = useState(null); 
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,6 +16,7 @@ const CreateBlogPost = ({ addPost }) => {
       id: Date.now(),
       title,
       content,
+       image,
     };
    const existingPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
     const updatedPosts = [...existingPosts, newPost];
@@ -20,14 +27,26 @@ const CreateBlogPost = ({ addPost }) => {
 
     setTitle('');
     setContent('');
+    setImage(null);
   };
 
   return (
     <div className="lg:w-1/2 w-full">
+      <h2 className=' text-xl font-medium text-gray-200 text-center'>Create New Blog Post</h2>
       <Card className=' bg-white rounded-lg shadow-4xl  shadow-gray-50'>
-        <h2 className=' text-xl font-medium text-gray-200 text-center'>Create New Blog Post</h2>
-        <form onSubmit={handleSubmit} className='mt-2 p-4'>
+        <form onSubmit={handleSubmit} className=' p-4'>
           <div className=''>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="file-upload" value="Upload file" />
+              </div>
+              <FileInput
+                id="file-upload"
+                sizing="lg"
+                onChange={handleFileChange}
+                accept="image/*"
+              />  
+            </div>
             <div className='flex-1'>
               <div className="mb-2 block">
                 <Label htmlFor="title" value="Title" />
@@ -56,11 +75,8 @@ const CreateBlogPost = ({ addPost }) => {
             </div>
             <Button gradientMonochrome="success" className='text-white bg-black mt-2 ' type="submit">Create Post</Button>
           </div>
-       
-      </form>
+        </form>
       </Card>
-      
-          
     </div>
   );
 };

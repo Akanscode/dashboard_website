@@ -3,15 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import CreateBlogPost from './CreateBlogPost';
 import EditBlogPost from './EditBlogPost';
 import ViewBlogPost from './ViewBlogPost';
-import { Button  } from 'flowbite-react';
-//import CustomSidebar from './CustomSideBar';
+import CustomSidebar from './CustomSideBar';
 
-const Dashboard = ({handleLogout}) => {
+
+
+
+
+const Dashboard = ({setIsLoggedIn }) => {
   const [posts, setPosts] = useState([]);
   const [editing, setEditing] = useState(false);
   const [currentPost, setCurrentPost] = useState(null);
+  const [activeTab, setActiveTab] = useState('home');
  
   const navigate = useNavigate();
+
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
     setPosts(storedPosts);
@@ -23,12 +28,14 @@ const Dashboard = ({handleLogout}) => {
 
   const addPost = (newPost) => {
     setPosts([...posts, newPost]);
-    navigate('/'); // Redirect to the home page after adding a post
+    navigate('/'); 
+    setActiveTab('home');
   };
 
   const editPost = (post) => {
     setEditing(true);
     setCurrentPost(post);
+    setActiveTab('edit');
   };
 
   const updatePost = (updatedPost) => {
@@ -38,41 +45,46 @@ const Dashboard = ({handleLogout}) => {
     setPosts(updatedPosts);
     setEditing(false);
     setCurrentPost(null);
+    setActiveTab('home');
   };
+
 
   const deletePost = (postId) => {
     const updatedPosts = posts.filter((post) => post.id !== postId);
     setPosts(updatedPosts);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+  };
  
   return (
-    <div className="flex">
-     
+    <div className=" container mx-auto flex justify-between">
+      <CustomSidebar activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout}  />
       <div className="flex-1 p-4">
-        <div className='flex justify-between'>
-          <h1 className=' text-xl font-medium capitalize'>Blog Dashboard</h1>
-          <Button className='bg-red-200 text-white' onClick={handleLogout}>
-              Logout
-            </Button>
-        </div>
-        
         {!editing ? (
-          <CreateBlogPost addPost={addPost} />
+          activeTab === 'create' ? (
+            <CreateBlogPost addPost={addPost} />
+          ) : (
+              <>
+                <h2 className=' text-center font-bold text-xl capitalize'>Blog Posts</h2>
+                <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-10'>
+                  {posts.map((post) => (
+                    <ViewBlogPost
+                      key={post.id}
+                      post={post}
+                      editPost={editPost}
+                      deletePost={deletePost}
+                      
+                    />
+                  ))}
+                </div>
+              </>
+          )
         ) : (
           <EditBlogPost post={currentPost} updatePost={updatePost} />
         )}
-        <hr />
-        <h2 className=' text-center font-bold text-xl capitalize'>Blog Posts</h2>
-        <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-10'>
-          {posts.map((post) => (
-            <ViewBlogPost
-              key={post.id}
-              post={post}
-              editPost={editPost}
-              deletePost={deletePost}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
