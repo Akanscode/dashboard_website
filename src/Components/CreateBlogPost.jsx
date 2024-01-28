@@ -13,24 +13,39 @@ const CreateBlogPost = ({ addPost }) => {
     setImage(file);
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!title.trim() || !content.trim()) {
+      
+      
+      return;
+    }
+
+    if (!image) {
+      
+      return;
+    }
+
     const newPost = {
       id: Date.now(),
       title,
       content,
-       image,
+      image,
     };
-   const existingPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+
+    const existingPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
     const updatedPosts = [...existingPosts, newPost];
     localStorage.setItem('blogPosts', JSON.stringify(updatedPosts));
 
-    
     addPost(newPost);
 
+    // Clear form fields and error message
     setTitle('');
     setContent('');
     setImage(null);
+    
   };
 
   return (
