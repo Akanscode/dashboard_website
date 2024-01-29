@@ -29,6 +29,7 @@ const App = () => {
             <Route path="blogpost" element={<ViewBlogPost />} />
             <Route path="singlepost" element={<ViewSingleBlogPost />} />
              <Route path="createblog" element={<CreateBlogPost />} />
+             <Route path="login" element={<Login />} />
             
             
             
