@@ -27,7 +27,7 @@ const Login = () => {
                 <input type="password" name="password" id="password" placeholder="enter password for the password"  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:border-gray-600 block w-full p-2.5 "/>
               </div>
              
-              <Link to="/" type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</Link>
+              <Link to="/dashboard" type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</Link>
              
             </form>
             
