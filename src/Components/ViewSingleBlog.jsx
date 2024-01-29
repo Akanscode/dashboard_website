@@ -1,7 +1,8 @@
 import React from 'react';
+import CustomSidebar from './CustomSideBar';
+import { Link } from 'react-router-dom';
 
-
-const ViewSingleBlogPost = ({post}) => {
+const ViewSingleBlogPost = () => {
   
   
 
@@ -9,9 +10,15 @@ const ViewSingleBlogPost = ({post}) => {
 
   return (
     <div>
-      <h1 >View Blog Post</h1>
-      <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white  antialiased">
-  <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
+      <CustomSidebar />
+      <div className='p-4 sm:ml-64'>
+        <div className='p-4'>
+          <div>
+            <h1 className='text-center text-gray-900' >View Blog Post</h1>
+            <Link to="/" className="text-gray-600 font-medium">Back to Home</Link>
+            <div className='w-full max-w-screen-xl h-full md:h-auto'>
+               <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white  antialiased">
+               <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
       <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue ">
           <header className="mb-4 lg:mb-6 not-format">
               <address className="flex items-center mb-6 not-italic">
@@ -82,108 +89,7 @@ const ViewSingleBlogPost = ({post}) => {
           <h4>Measurement from the baseline</h4>
           <p>A typeface is a collection of letters. While each letter is unique, certain shapes are shared across
               letters. A typeface represents shared patterns across a collection of letters.</p>
-          <h3>Type classification</h3>
-          <h4>Serif</h4>
-          <p>A serif is a small shape or projection that appears at the beginning or end of a stroke on a letter.
-              Typefaces with serifs are called serif typefaces. Serif fonts are classified as one of the
-              following:</p>
-          <h4>Old-Style serifs</h4>
-          <ul>
-              <li>Low contrast between thick and thin strokes</li>
-              <li>Diagonal stress in the strokes</li>
-              <li>Slanted serifs on lower-case ascenders</li>
-          </ul><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-2.png" alt=""/>
-          <ol>
-              <li>Low contrast between thick and thin strokes</li>
-              <li>Diagonal stress in the strokes</li>
-              <li>Slanted serifs on lower-case ascenders</li>
-          </ol>
-          <h3>Laying the best for successful prototyping</h3>
-          <p>A serif is a small shape or projection that appears at the beginning:</p>
-          <blockquote>
-              <p>Flowbite is just awesome. It contains tons of predesigned components and pages starting from
-                  login screen to complex dashboard. Perfect choice for your next SaaS application.</p>
-          </blockquote>
-          <h4>Code example</h4>
-          <p>A serif is a small shape or projection that appears at the beginning or end of a stroke on a letter.
-              Typefaces with serifs are called serif typefaces. Serif fonts are classified as one of the
-              following:</p>
-          <pre><code class="language-html">&lt;dl class="grid grid-cols-2 gap-8 max-w-screen-md text-gray-900 sm:grid-cols-3 dark:text-white"&gt;
-&lt;div class="flex flex-col justify-center items-center"&gt;
-  &lt;dt class="mb-2 text-3xl font-extrabold"&gt;73M+&lt;/dt&gt;
-  &lt;dd class="text-lg font-normal text-gray-500 dark:text-gray-400"&gt;developers&lt;/dd&gt;
-&lt;/div&gt;
-&lt;div class="flex flex-col justify-center items-center"&gt;
-  &lt;dt class="mb-2 text-3xl font-extrabold"&gt;1B+&lt;/dt&gt;
-  &lt;dd class="text-lg font-normal text-gray-500 dark:text-gray-400"&gt;contributors&lt;/dd&gt;
-&lt;/div&gt;
-&lt;div class="flex flex-col justify-center items-center"&gt;
-  &lt;dt class="mb-2 text-3xl font-extrabold"&gt;4M+&lt;/dt&gt;
-  &lt;dd class="text-lg font-normal text-gray-500 dark:text-gray-400"&gt;organizations&lt;/dd&gt;
-&lt;/div&gt;
-&lt;/dl&gt;
-</code></pre>
-          <h4>Table example</h4>
-          <p>A serif is a small shape or projection that appears at the beginning or end of a stroke on a letter.
-          </p>
-          <table>
-              <thead>
-                  <tr>
-                      <th>Country</th>
-                      <th>Date &amp; Time</th>
-                      <th>Amount</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>United States</td>
-                      <td>April 21, 2021</td>
-                      <td><strong>$2,300</strong></td>
-                  </tr>
-                  <tr>
-                      <td>Canada</td>
-                      <td>May 31, 2021</td>
-                      <td><strong>$300</strong></td>
-                  </tr>
-                  <tr>
-                      <td>United Kingdom</td>
-                      <td>June 3, 2021</td>
-                      <td><strong>$2,500</strong></td>
-                  </tr>
-                  <tr>
-                      <td>Australia</td>
-                      <td>June 23, 2021</td>
-                      <td><strong>$3,543</strong></td>
-                  </tr>
-                  <tr>
-                      <td>Germany</td>
-                      <td>July 6, 2021</td>
-                      <td><strong>$99</strong></td>
-                  </tr>
-                  <tr>
-                      <td>France</td>
-                      <td>August 23, 2021</td>
-                      <td><strong>$2,540</strong></td>
-                  </tr>
-              </tbody>
-          </table>
-          <h3>Best practices for setting up your prototype</h3>
-          <p><strong>Low fidelity or high fidelity?</strong> Fidelity refers to how close a prototype will be to
-              the real deal. If you’re simply preparing a quick visual aid for a presentation, a low-fidelity
-              prototype — like a wireframe with placeholder images and some basic text — would be more than
-              enough. But if you’re going for more intricate usability testing, a high-fidelity prototype — with
-              on-brand colors, fonts and imagery — could help get more pointed results.</p>
-          <p><strong>Consider your user</strong>. To create an intuitive user flow, try to think as your user
-              would when interacting with your product. While you can fine-tune this during beta testing,
-              considering your user’s needs and habits early on will save you time by setting you on the right
-              path.</p>
-          <p><strong>Start from the inside out</strong>. A nice way to both organize your tasks and create more
-              user-friendly prototypes is by building your prototypes ‘inside out’. Start by focusing on what will
-              be important to your user, like a Buy now button or an image gallery, and list each element by order
-              of priority. This way, you’ll be able to create a prototype that puts your users’ needs at the heart
-              of your design.</p>
-          <p>And there you have it! Everything you need to design and share prototypes — right in Flowbite Figma.
-          </p>
+          
           <section className="not-format">
               <div className="flex justify-between items-center mb-6">
                   <h2 className="text-lg lg:text-2xl font-bold text-gray-900">Discussion (20)</h2>
@@ -204,13 +110,12 @@ const ViewSingleBlogPost = ({post}) => {
           </section>
       </article>
   </div>
-</main>
-
-<aside aria-label="Related articles" className="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
-  <div className="px-4 mx-auto max-w-screen-xl">
-      <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
-      <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          <article className="max-w-xs">
+            </main>
+            <aside aria-label="Related articles" className="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800">
+              <div className="px-4 mx-auto ">
+                <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Related articles</h2>
+                <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+                  <article className="max-w-xs">
               <a href="#">
                   <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" className="mb-5 rounded-lg" alt="Image 1"/>
               </a>
@@ -261,11 +166,15 @@ const ViewSingleBlogPost = ({post}) => {
       </div>
   </div>
 </aside>
+           </div>
 
 
        
       
        
+    </div>
+        </div>
+      </div>
     </div>
   );
 };

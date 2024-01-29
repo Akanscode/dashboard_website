@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CustomSidebar from './CustomSideBar';
 //import { TextInput, Textarea, Button, Label, Card, FileInput  } from 'flowbite-react';
 const CreateBlogPost = ({ addPost }) => {
   const [title, setTitle] = useState('');
@@ -49,7 +50,11 @@ const CreateBlogPost = ({ addPost }) => {
   };
 
   return (
-    <div className=" p-4 w-full max-w-2xl h-full md:h-auto">
+    <div>
+      <CustomSidebar />
+      <div className='p-4 sm:ml-64'>
+        <div className='p-4'>
+          <div className=" p-4 w-full max-w-2xl h-full md:h-auto">
       <div className=" p-4 bg-white rounded-lg shadow  sm:p-5">
         <div className="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 ">
           <h3 className="text-lg font-semibold text-gray-900">
@@ -97,7 +102,12 @@ const CreateBlogPost = ({ addPost }) => {
         </form>
       </div>
     </div>
+        </div>
+      </div>
+        
       
+   </div>
+  
       
      
     

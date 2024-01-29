@@ -2,8 +2,8 @@ import React from 'react';
 //import { Button, Card } from 'flowbite-react';
 import { HiOutlinePencilAlt } from "react-icons/hi"
 import { blogPost } from './data';
-
-const ViewBlogPost = ({ post, editPost, viewpost }) => {
+import { Link } from 'react-router-dom';
+const ViewBlogPost = () => {
   
   return (
     <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3 mx-10'>
@@ -16,20 +16,20 @@ const ViewBlogPost = ({ post, editPost, viewpost }) => {
         <h5 className="mb-2 text-sm font-normal tracking-tight text-gray-900 dark:text-white">{blog.title}</h5>
         <p className="mb-3 font-normal text-gray-700">{blog.content}</p>
         <div className='flex space-x-4'>
-          <a href='/editblog' className=' bg-blue-600 inline-flex items-center text-white border border-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'
+          <Link to='/editblog' className=' bg-blue-600 inline-flex items-center text-white border border-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'
            
           >
             <HiOutlinePencilAlt className="w-5 h-5 mr-1 -ml-1"/>
             Edit
-          </a>
-          <a href="/singlepost"
+          </Link>
+          <Link to="/singlepost"
             
            
-            className="bg-red-600 inline-flex items-center text-white border border-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
+            className="font-meduim text-gray-500  
           ">
           
-           View
-          </a>
+          Read More
+          </Link>
         </div>
       </div>
     </div>

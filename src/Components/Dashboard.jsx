@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 //import { useNavigate } from 'react-router-dom';
 //import CreateBlogPost from './CreateBlogPost';
 //import EditBlogPost from './EditBlogPost';
 import ViewBlogPost from './ViewBlogPost';
 import CustomSidebar from './CustomSideBar';
 
-const Dashboard = ({ setIsLoggedIn }) => {
+const Dashboard = () => {
   //const [posts, setPosts] = useState([]);
   //const [editing, setEditing] = useState(false);
   //const [currentPost, setCurrentPost] = useState(null);
-  const [activeTab, setActiveTab] = useState('home');
-
+  
   //const navigate = useNavigate();
 
   /*useEffect(() => {
@@ -57,14 +56,11 @@ const Dashboard = ({ setIsLoggedIn }) => {
     setPosts(updatedPosts);
   };*/
 
-  const handleLogout = () => {
-  // Remove only the 'isLoggedIn' flag, preserving blog posts in localStorage
-  localStorage.removeItem('isLoggedIn');
-  setIsLoggedIn(false);
-};
+ 
+
   return (
     <div>
-      <CustomSidebar activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout} />
+      <CustomSidebar  />
       <div className="p-4 sm:ml-64">
         <div className='p-4 '>
           

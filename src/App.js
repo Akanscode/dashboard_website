@@ -5,6 +5,7 @@ import Login from './Components/Login';
 import EditBlogPost from './Components/EditBlogPost';
 import ViewBlogPost from './Components/ViewBlogPost';
 import ViewSingleBlogPost from './Components/ViewSingleBlog';
+import CreateBlogPost from './Components/CreateBlogPost';
 //import CreateBlogPost from './Components/CreateBlogPost';
 //import ViewSingleBlog from './Components/ViewSingleBlog';
 
@@ -26,7 +27,8 @@ const App = () => {
             <Route path="/" element={<Dashboard setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="editblog" element={<EditBlogPost />} />
             <Route path="blogpost" element={<ViewBlogPost />} />
-             <Route path="singlepost" element={<ViewSingleBlogPost />} />
+            <Route path="singlepost" element={<ViewSingleBlogPost />} />
+             <Route path="createblog" element={<CreateBlogPost />} />
             
             
             
