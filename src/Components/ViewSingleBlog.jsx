@@ -15,7 +15,7 @@ const ViewSingleBlogPost = () => {
         <div className='p-4'>
           <div>
             <h1 className='text-center text-gray-900' >View Blog Post</h1>
-            <Link to="/" className="text-gray-600 font-medium">Back to Home</Link>
+            <Link to="/dashboard" className="text-gray-600 font-medium">Back to Home</Link>
             <div className='w-full max-w-screen-xl h-full md:h-auto'>
                <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white  antialiased">
                <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">

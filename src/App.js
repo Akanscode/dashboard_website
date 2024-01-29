@@ -21,12 +21,12 @@ const App = () => {
        
           
             <Routes>
-            <Route path="/" element={<Dashboard setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="dashboard" element={<Dashboard />}/>
             <Route path="editblog" element={<EditBlogPost />} />
             <Route path="blogpost" element={<ViewBlogPost />} />
             <Route path="singlepost" element={<ViewSingleBlogPost />} />
              <Route path="createblog" element={<CreateBlogPost />} />
-             <Route path="login" element={<Login />} />
+             <Route path="/" element={<Login />} />
             
             
             
